@@ -1,0 +1,5 @@
+neo4j
+spacy
+networkx
+ollama
+python-dotenv
