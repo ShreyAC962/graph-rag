@@ -40,6 +40,7 @@ Now LLM can answer:
     Final Answer
 
 ## Production-Ready File Structure
+```
 graph_rag/
 │
 ├── app.py
@@ -58,8 +59,54 @@ graph_rag/
 ├── llm/
 │   ├── ollama_client.py
 │
-├── utils/
-│   ├── logger.py
 │
 └── data/
     └── sample.txt
+```
+
+
+## How to Run End-to-End
+    1. Start Neo4j
+    ```neo4j start```
+    2. Start Ollama
+    ```ollama run mistral```
+    3. Load data
+    ```python ingestion/load_data.py```
+    4. Run app
+    ```python app.py```
+
+    Example Queries
+    Ask: Apple acquisitions?
+    → Apple acquired Beats
+
+    Ask: Who did Google acquire?
+    → Google acquired YouTube
+
+ ##   Strengths
+    Graph DB (Neo4j) → scalable relationships
+    Modular architecture
+    Replaceable LLM (Ollama → OpenAI)
+    Clear ingestion + retrieval separation
+
+## Real-World Improvements
+    1. Better Entity Extraction
+    Use: LLM-based extraction instead of spaCy
+    2. Add Embeddings
+    Hybrid: Graph + Vector DB (FAISS)
+    3. Advanced Querying
+    Multi-hop traversal
+    Cypher optimization
+    1. Caching
+    Redis for query results
+    1. API Layer
+    Use: FastAPI
+
+    Pros
+    Strong reasoning over relationships
+    Multi-hop inference
+    Ideal for legal/medical graphs
+    
+    Cons
+    Complex pipeline
+    Graph DB overhead
+    Higher compute cost
